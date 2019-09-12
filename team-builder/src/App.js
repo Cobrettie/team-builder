@@ -3,6 +3,8 @@ import Form from './Components/Form'
 import './App.css'
 
 function App() {
+  // set up state for team
+  const [team, setTeam] = useState([])
 
   return (
     <div className="App">
