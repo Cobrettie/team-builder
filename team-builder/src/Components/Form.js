@@ -4,31 +4,27 @@ import '../App.css'
 const Form = (props) => {
     // console.log(props)
 
-    //set up a state property for team member list
-    const [member, setMember] = useState([{
+    //set initial value for members
+    const initialMembers = { 
         name: "",
         email: "",
-        role: ""
-    }])
+        role: "" 
+    }
+
+    //set up a state property for team member list
+    const [member, setMember] = useState(initialMembers)
 
     // set up change handler function to handle changing state
     const handleChange = event => {
+        console.log(member)
       setMember({ ...member, [event.target.name]: event.target.value })
     }
 
     // set up handleSubmit function for submitting the form
     const handleSubmit = event => {
-        console.log(member)
+        // console.log(member)
         event.preventDefault()
-        // set inputs back to empty after submit
-        setMember({
-            name: "",
-            email: "",
-            role: ""
-        })
-        console.log(member.name)
-        console.log(member.email)
-        console.log(member.role)
+        props.setTeam([...props.team, member])
     }
 
     return (
